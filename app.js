@@ -17,11 +17,13 @@ app.get('/api', (req, res) => {
 
   // Validate and get current UTC time within +/-2 minutes
   const currentUTCTime = new Date();
-  const currentUTCMinutes = currentUTCTime.getUTCMinutes();
+  //
+  const currentUTCHours = currentUTCTime.getUTCHours();
 
-  if (currentUTCMinutes < -2 || currentUTCMinutes > 2) {
+    if (currentUTCHours < -2 || currentUTCHours > 2) {
     return res.status(400).json({ error: 'Invalid UTC time range' });
-  }
+    }
+
 
   // Get GitHub URL of the file being run and full source code URL
   const fileURL = 'https://github.com/Oviawe007/stage_one/blob/main/app.js';
