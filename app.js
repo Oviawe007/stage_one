@@ -15,24 +15,14 @@ app.get('/api', (req, res) => {
   const currentDate = new Date();
   const currentDay = daysOfWeek[currentDate.getUTCDay()];
 
-  // Validate and get current UTC time within +/-2 minutes
-  const currentUTCTime = new Date();
-  //
-  const currentUTCHours = currentUTCTime.getUTCHours();
-  const currentUTCMinutes = currentUTCTime.getUTCMinutes();
+  
+    // Validate and get current UTC time within +/-2 minutes
+    const currentUTCTime = new Date();
+    const currentUTCMinutes = currentUTCTime.getUTCMinutes();
 
-    // if (currentUTCHours < -2 || currentUTCHours > 2) {
+    // if (currentUTCMinutes < -2 || currentUTCMinutes > 2) {
     // return res.status(400).json({ error: 'Invalid UTC time range' });
     // }
-
-
-    if (currentUTCMinutes < -2 || currentUTCMinutes > 2) {
-    return res.status(400).json({ error: 'Invalid UTC time range' });
-    }
-
-
-
-
 
 
 
