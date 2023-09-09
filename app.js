@@ -19,12 +19,32 @@ app.get('/api', (req, res) => {
     // Validate and get current UTC time within +/-2 minutes
     const currentUTCTime = new Date();
     // const currentUTCMinutes = currentUTCTime.getUTCMinutes();
-    const currentUTCFormatted = currentUTCTime.toISOString();
+    const currentUTCHours = currentUTCTime.getUTCHours();
+    const currentUTCMinutes = currentUTCTime.getUTCMinutes();
+    const currentUTCSeconds = currentUTCTime.getUTCSeconds();
 
-    // if (currentUTCMinutes < -2 || currentUTCMinutes > 2) {
+    // if (
+    // currentUTCHours < -2 || currentUTCHours > 2 ||
+    // currentUTCMinutes < -2 || currentUTCMinutes > 2
+    // ) {
     // return res.status(400).json({ error: 'Invalid UTC time range' });
     // }
 
+
+    // Format the UTC time as needed
+    const formattedUTCTime =
+    currentUTCTime.getUTCFullYear() +
+    '-' +
+    String(currentUTCTime.getUTCMonth() + 1).padStart(2, '0') + // Months are 0-based
+    '-' +
+    String(currentUTCTime.getUTCDate()).padStart(2, '0') +
+    'T' +
+    String(currentUTCTime.getUTCHours()).padStart(2, '0') +
+    ':' +
+    String(currentUTCTime.getUTCMinutes()).padStart(2, '0') +
+    ':' +
+    String(currentUTCSeconds).padStart(2, '0') +
+    'Z';
 
 
   // Get GitHub URL of the file being run and full source code URL
@@ -35,7 +55,7 @@ app.get('/api', (req, res) => {
   const responseData = {
     slack_name: slackName,
     current_day: currentDay,
-    utc_time: "2023-08-21T15:04:05Z",
+    utc_time: formattedUTCTime,
     track: track,
     github_file_url: fileURL,
     github_repo_url: sourceCodeURL,
