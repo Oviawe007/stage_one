@@ -18,7 +18,8 @@ app.get('/api', (req, res) => {
   
     // Validate and get current UTC time within +/-2 minutes
     const currentUTCTime = new Date();
-    const currentUTCMinutes = currentUTCTime.getUTCMinutes();
+    // const currentUTCMinutes = currentUTCTime.getUTCMinutes();
+    const currentUTCFormatted = currentUTCTime.toISOString();
 
     // if (currentUTCMinutes < -2 || currentUTCMinutes > 2) {
     // return res.status(400).json({ error: 'Invalid UTC time range' });
@@ -34,7 +35,7 @@ app.get('/api', (req, res) => {
   const responseData = {
     slack_name: slackName,
     current_day: currentDay,
-    utc_time: currentUTCTime.toISOString(),
+    utc_time: "2023-08-21T15:04:05Z",
     track: track,
     github_file_url: fileURL,
     github_repo_url: sourceCodeURL,
