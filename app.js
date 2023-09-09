@@ -34,10 +34,10 @@ app.get('/api', (req, res) => {
   const responseData = {
     slack_name: slackName,
     current_day: currentDay,
-    current_utc_time: currentUTCTime.toISOString(),
+    utc_time: currentUTCTime.toISOString(),
     track: track,
-    file_url: fileURL,
-    source_code_url: sourceCodeURL,
+    github_file_url: fileURL,
+    github_repo_url: sourceCodeURL,
     status: 200
   };
 
